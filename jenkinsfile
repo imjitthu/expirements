@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-          MY_FILES = sh(script: 'cd mydir && ls -l', returnStdout: true)
+          MY_FILES = "sh(script: 'cd mydir && ls -l', returnStdout: true)"
         }
     stages {
         stage ('Test') {
