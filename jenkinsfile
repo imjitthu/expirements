@@ -1,4 +1,4 @@
-def abc = sh "uname" > abc.txt
+def abc = sh "uname > abc.txt"
 
 pipeline {
     agent any
