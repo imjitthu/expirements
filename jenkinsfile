@@ -1,4 +1,4 @@
-def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
+def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk {print $4}', returnStdout: true)
 
 pipeline {
     agent any
