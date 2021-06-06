@@ -1,11 +1,17 @@
-def ret = sh(script: 'uname', returnStdout: true)
-println ret
+def image_tag
+
+
+//  = sh(script: 'uname', returnStdout: true)
+// println ret
 
 pipeline {
     agent any
     stages {
         stage ('Test') {
             steps {
+                script {
+                image_tag = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
+                    }
                 echo "hello world"
             }
         }
