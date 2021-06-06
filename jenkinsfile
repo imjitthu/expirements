@@ -6,7 +6,7 @@ pipeline {
           MY_FILES = "sh(script: 'cd mydir && ls -l', returnStdout: true)"
         }
     stages {
-        stage ('Test') {
+        stage ('test') {
             steps {
                 echo "${MY_FILES}"
                 echo "${abc}"
