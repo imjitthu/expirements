@@ -1,14 +1,12 @@
 pipeline {
     agent any
+    environment {
+        TAG = sh 'tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}')'
+    }
     stages {
         stage ('Test') {
             steps {
-                sh '''
-                tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}')
-                echo $tag
-                sed -i s/admin/$tag/ pod.yml
-                echo abc/$tag/tag
-                '''
+                echo "${env.TAG}"
                 sh 'cat pod.yml'
             }
         }
