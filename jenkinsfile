@@ -1,4 +1,4 @@
-def image_tag = sh(script: 'uname', returnStdout: true)
+def image_tag = sh returnStdout: true, script: 'ls -l'
 
 
 //  = sh(script: 'uname', returnStdout: true)
