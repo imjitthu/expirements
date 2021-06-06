@@ -1,12 +1,11 @@
-def var = sh(script: 'uname', returnStdout: true)
+//def var = sh(script: 'uname', returnStdout: true)
 
 pipeline {
     agent any
     stages {
         stage ('Test') {
             steps {
-                echo "${var}"
-                println var
+                echo "hello world"
             }
         }
     }
