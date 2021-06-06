@@ -1,17 +1,11 @@
-def image_tag = "1.0"
-
-
-//  = sh(script: 'uname', returnStdout: true)
-
 pipeline {
     agent any
-    // environment {
-    //       MY_FILES = sh(script: 'cd mydir && ls -l', returnStdout: true)
-    //     }
+    environment {
+          MY_FILES = sh(script: 'cd mydir && ls -l', returnStdout: true)
+        }
     stages {
         stage ('Test') {
             steps {
-                echo "${image_tag}"
                 echo "${MY_FILES}"
                 }
             }
