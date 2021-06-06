@@ -1,17 +1,16 @@
-def image_tag
+def image_tag = "ABC"
 
 
 //  = sh(script: 'uname', returnStdout: true)
-// println ret
 
 pipeline {
     agent any
     stages {
         stage ('Test') {
             steps {
-                script {
-                image_tag = "ABC"
-                    }
+                // script {
+                // image_tag = "ABC"
+                //     }
                 echo "${image_tag}"
             }
         }
