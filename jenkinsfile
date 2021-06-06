@@ -1,17 +1,19 @@
-def image_tag = sh returnStdout: true, script: 'ls -l'
+def image_tag = "ABC"
 
 
 //  = sh(script: 'uname', returnStdout: true)
 
 pipeline {
     agent any
+    environment {
+          MY_FILES = sh(script: 'cd mydir && ls -l', returnStdout: true)
+        }
     stages {
         stage ('Test') {
             steps {
-                // script {
-                // image_tag = "ABC"
-                //     }
                 echo "${image_tag}"
+                echo "${MY_FILES}"
+                }
             }
         }
     }
