@@ -7,8 +7,8 @@ pipeline {
                 tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}')
                 echo $tag
                 sed 's/admin/$tag/' pod.yml
-                car pod.yml
                 '''
+                sh 'cat pod.yml'
             }
         }
     }
