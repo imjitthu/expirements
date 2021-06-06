@@ -8,8 +8,10 @@ pipeline {
         stage ('Test') {
             steps {
                 echo "${env.TAG}"
+                script {
                 def UID = sh(script: 'uname', returnStdout: true)
                 println UID
+                }
             }
         }
     }
