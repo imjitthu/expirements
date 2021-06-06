@@ -1,4 +1,9 @@
-def abc = "sh(script: 'uname', returnStdout: true)"
+script {
+def abc = sh '''
+    uname
+    '''
+}
+
 
 pipeline {
     agent any
