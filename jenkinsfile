@@ -9,8 +9,8 @@ pipeline {
             steps {
                 echo "${env.TAG}"
                 script {
-                def UID = sh(script: 'uname', returnStdout: true)
-                println UID
+                def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
+                println GIT_TAG
                 }
             }
         }
