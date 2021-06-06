@@ -1,4 +1,4 @@
-def image_tag = "sh uname -m"
+def image_tag = sh(script: 'uname', returnStdout: true)
 
 
 //  = sh(script: 'uname', returnStdout: true)
