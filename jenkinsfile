@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        TAG = sh 'tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}')'
+        TAG = sh 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}''
     }
     stages {
         stage ('Test') {
