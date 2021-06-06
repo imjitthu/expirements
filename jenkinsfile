@@ -1,11 +1,11 @@
-def GIT_TAG = sh(script: 'uname -m', returnStdout: true)
+def ret = sh(script: 'uname', returnStdout: true)
 
 pipeline {
     agent any
     stages {
         stage ('Test') {
             steps {
-                echo "${GIT_TAG}"
+                println ret
             }
         }
     }
