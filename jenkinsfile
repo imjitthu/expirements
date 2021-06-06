@@ -9,8 +9,9 @@ pipeline {
                 sed 's/admin/${tag}/' pod.yml
                 '''
                 def text = readFile file: "pod.yml"
-                text = text.replace("admin", "$tag")
-                writeFile file: "pod.yml", text: text
+                println def
+                // text = text.replace("admin", "$tag")
+                // writeFile file: "pod.yml", text: text
                 sh 'cat pod.yml'
             }
         }
