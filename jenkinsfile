@@ -1,3 +1,4 @@
+def GIT_TAG = "git new tag"
 pipeline {
     agent any
     environment {
@@ -7,11 +8,11 @@ pipeline {
     stages {
         stage ('Test') {
             steps {
-                echo "${env.TAG}"
-                script {
-                def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
-                println GIT_TAG
-                }
+                echo "${env.GIT_TAG}"
+                // script {
+                // def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
+                // println GIT_TAG
+                // }
             }
         }
     }
