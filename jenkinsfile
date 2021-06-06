@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ('Test') {
             steps {
-                echo "${var.GIT_TAG}"
+                echo "${GIT_TAG}"
                 // script {
                 // def GIT_TAG = sh(script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'', returnStdout: true)
                 // println GIT_TAG
