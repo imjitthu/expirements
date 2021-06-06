@@ -1,11 +1,15 @@
 def abc = sh(script: 'uname', returnStdout: true)
 
 pipeline {
+    environment {
+        TAG = sh(returnStdout: true, script: 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'')
+        }
     agent any
     stages {
         stage ('Test') {
             steps {
                 echo "${abc}"
+                echo "${TAG}"
             }
         }
     }
