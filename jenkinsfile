@@ -1,4 +1,4 @@
-def var = sh 'uname -i'
+def var = sh(script: 'uname', returnStdout: true)
 
 pipeline {
     agent any
