@@ -8,6 +8,12 @@ pipeline {
                 echo $tag
                 sed 's/admin/${tag}/' pod.yml
                 '''
+                script {
+                sh 'tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}')'
+                def text = readFile file: "pod.yml"
+                text = text.replaceAll("%admin%", "$tag")
+                writeFile file: "pod.yml", text: text
+                }
                 sh 'cat pod.yml'
             }
         }
