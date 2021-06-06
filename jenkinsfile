@@ -1,13 +1,14 @@
 pipeline {
     agent any
     environment {
-        TAG = sh 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}''
+        //TAG = sh 'git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}''
     }
     stages {
         stage ('Test') {
             steps {
                 echo "${env.TAG}"
-                sh 'cat pod.yml'
+                def UID = sh(script: 'uname', returnStdout: true)
+                println UID
             }
         }
     }
