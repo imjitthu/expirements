@@ -1,7 +1,5 @@
 script {
-def abc = sh '''
-    uname
-    '''
+def abc = sh "uname"
 }
 
 
