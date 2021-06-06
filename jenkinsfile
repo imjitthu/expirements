@@ -1,7 +1,4 @@
-script {
 def abc = sh "uname"
-}
-
 
 pipeline {
     agent any
