@@ -7,7 +7,7 @@ pipeline {
         stage ('test') {
             steps {
                 echo "${MY_FILES}"
-                echo "${var.abc}"
+                echo "${env.MY_FILES}"
                 }
             }
         }
