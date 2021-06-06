@@ -3,13 +3,13 @@ script {
     tag=$(git tag | xargs -I@ git log --format=format:"%ai @%n" -1 @ | sort -k2 | tail -n 1 | awk '{print $4}'}
     '''
     }
-    
+
 pipeline {
     agent any
     stages {
         stage ('Test') {
             steps {
-                echo "${TAG}"
+                echo "${tag}"
             }
         }
     }
