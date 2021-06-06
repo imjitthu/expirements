@@ -1,5 +1,5 @@
-def var = sh(script: 'uname', returnStdout: true)
-println var
+def ret = sh(script: 'uname', returnStdout: true)
+println ret
 
 pipeline {
     agent any
